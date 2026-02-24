@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Main Page</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: url('https://th.bing.com/th/id/R.3ee7ccfb9295a4d54de4e6250996d8f7?rik=L7FEqH12XiCZrA&riu=http%3a%2f%2fimg.pconline.com.cn%2fimages%2fphotoblog%2f8%2f2%2f9%2f5%2f8295497%2f20101%2f18%2f1263777539915.jpg&ehk=hClytFBNRD%2fwzyPrHceuH%2fuXnL7Nbr0%2bYLrXkfBCY6I%3d&risl=&pid=ImgRaw&r=0&PC=EMMX01') no-repeat center center fixed;
+        background-size: cover;
+        font-family: 'Courier New', monospace;
+    }
+    .header-date {
+        position: fixed;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 24px;
+        color: #fff;
+        text-shadow: 0 0 5px #000;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 5px 15px;
+        border-radius: 5px;
+    }
+    .title {
+        font-size: 60px;
+        color: #fff;
+        text-shadow: 0 0 10px #000;
+        margin-bottom: 10px;
+    }
+    .subtitle {
+        font-size: 28px;
+        color: #ff0;
+        text-shadow: 0 0 5px #000;
+        margin-bottom: 20px;
+    }
+    .clock {
+        font-size: 80px;
+        letter-spacing: 5px;
+        color: #fff;
+        text-shadow: 0 0 20px rgba(0,0,0,0.8);
+        background: rgba(0, 0, 0, 0.4);
+        padding: 20px 40px;
+        border-radius: 10px;
+    }
+    .footer-info {
+        position: fixed;
+        bottom: 50px;
+        left: 10px;
+        font-size: 18px;
+        color: #fff;
+        text-shadow: 0 0 5px #000;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+    .friend-links {
+        position: fixed;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 16px;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.4);
+        padding: 5px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        overflow: hidden;
+        white-space: nowrap;
+        transition: all 0.3s ease;
+        max-width: 120px;
+    }
+    .friend-links a {
+        color: #0ff;
+        text-decoration: none;
+        margin: 0 8px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    .friend-links:hover {
+        max-width: 500px;
+    }
+    .friend-links:hover a {
+        opacity: 1;
+    }
+    .right-info {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        font-size: 16px;
+        color: #fff;
+        text-shadow: 0 0 5px #000;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+</style>
+</head>
+<body>
+    <div class="header-date" id="header-date">0000-00-00 星期X</div>
+
+    <div class="title">Welcome to my blog.</div>
+    <div class="subtitle">It's  ↓</div>
+    <div class="clock" id="clock">00:00:00</div>
+    <div class="footer-info">©VMSum 2019 All rights reserved.</div>
+
+    <div class="friend-links">
+        Friend Links
+        <a href="https://www.youtube.com/@VMSum" target="_blank">My Youtube</a>
+        <a href="https://space.bilibili.com/1479438973" target="_blank">My Bilibili</a>
+        <a href="https://vmsum.github.io/chrome_dino_game.html" target="_blank">Easy Dino Game</a>
+    </div>
+
+    <div class="right-info">Image from Taiwan Sun Moon Lake</div>
+
+<script>
+    function pad(num) {
+        return num < 10 ? '0' + num : num;
+    }
+
+    function updateClock() {
+        const now = new Date();
+        const hours = pad(now.getHours());
+        const minutes = pad(now.getMinutes());
+        const seconds = pad(now.getSeconds());
+        document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+    }
+
+    function updateDate() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = pad(now.getMonth() + 1);
+        const day = pad(now.getDate());
+        const weekDays = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+        const week = weekDays[now.getDay()];
+        document.getElementById('header-date').textContent = `${year}-${month}-${day} ${week}`;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    setInterval(updateDate, 60000);
+    updateDate();
+</script>
+</body>
+</html>
