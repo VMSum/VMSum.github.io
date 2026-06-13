@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>超维基因性别鉴定系统</title>
+    <style>
+        body { font-family: 'Microsoft YaHei', sans-serif; text-align: center; background-color: #f0f4f8; padding: 50px; }
+        .box { background: white; max-width: 500px; margin: 0 auto; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        input { width: 80%; padding: 10px; margin: 10px 0; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; }
+        button { background-color: #007bff; color: white; border: none; padding: 12px 30px; font-size: 18px; border-radius: 5px; cursor: pointer; margin-top: 15px; }
+        button:hover { background-color: #0056b3; }
+        #result { margin-top: 20px; font-size: 20px; font-weight: bold; color: #d9534f; display: none; }
+        #loading { display: none; color: #666; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>🧬 超维基因性别鉴定系统 v114</h2>
+        <p>请输入被鉴定人父母的姓名进行量子演算</p>
+        <input type="text" id="dad" placeholder="请输入父亲的姓名">
+        <input type="text" id="mom" placeholder="请输入母亲的姓名">
+        <br>
+        <button onclick="startCalc()">开始精密计算</button>
+        
+        <div id="loading">
+            <p>🔄 正在连接基数据库...</p>
+            <p>🔄 正在排除数据干扰...</p>
+            <p>🔄 正在进行DNA螺旋逆向工程...</p>
+        </div>
+        
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function startCalc() {
+            const dad = document.getElementById('dad').value || "某位神秘男性";
+            const mom = document.getElementById('mom').value || "某位神秘女性";
+            
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('result').style.display = 'none';
+
+            // 假装计算 3 秒钟
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'none';
+                const resultDiv = document.getElementById('result');
+                resultDiv.style.display = 'block';
+                
+                //这是恶搞请勿当真
+                resultDiv.innerHTML = `
+                    ⚠️ <span style="color:red; font-size:24px;">鉴定结果异常！</span> ⚠️<br><br>
+                    经超维计算，<b>【${dad}】</b> 的生理性别为：<span style="color:blue; font-size:22px;">女 🚺</span><br>
+                    经超维计算，<b>【${mom}】</b> 的生理性别为：<span style="color:pink; font-size:22px;">男 🚹</span><br><br>
+                    💡 <b>最终结论：</b><br>
+                    由于性别数据发生量子坍缩，<br>
+                    你大概率是垃圾桶里捡来的，<br>
+                    也不排除你不是人类
+                `;
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
